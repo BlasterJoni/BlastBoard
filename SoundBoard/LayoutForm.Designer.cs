@@ -1,4 +1,4 @@
-﻿namespace SoundBoard
+﻿namespace BlastBoard
 {
     partial class LayoutForm
     {
@@ -111,7 +111,7 @@
             this.MaximumSize = new System.Drawing.Size(500, 95);
             this.MinimumSize = new System.Drawing.Size(300, 95);
             this.Name = "LayoutForm";
-            this.Text = "Layout";
+            this.Text = "BlastBoard - Layout";
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);

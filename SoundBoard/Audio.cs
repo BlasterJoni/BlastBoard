@@ -7,7 +7,7 @@ using NAudio;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 
-namespace SoundBoard
+namespace BlastBoard
 {
     //Code form the creator of the library.
     //I did changes to AudioPlayBackEngine() and Dispose().

@@ -1,4 +1,4 @@
-﻿namespace SoundBoard
+﻿namespace BlastBoard
 {
     partial class SettingsForm
     {
@@ -107,7 +107,7 @@
             this.MaximumSize = new System.Drawing.Size(1000, 130);
             this.MinimumSize = new System.Drawing.Size(160, 130);
             this.Name = "SettingsForm";
-            this.Text = "Settings";
+            this.Text = "BlastBoard - Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsForm_FormClosing);
             this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

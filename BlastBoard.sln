@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundBoard", "SoundBoard\SoundBoard.csproj", "{FD81E0DE-2D96-4C50-B3BB-530A4FE84975}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlastBoard", "SoundBoard\BlastBoard.csproj", "{FD81E0DE-2D96-4C50-B3BB-530A4FE84975}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

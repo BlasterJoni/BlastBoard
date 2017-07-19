@@ -7,15 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
-namespace SoundBoard
+namespace BlastBoard
 {
     public partial class ButtonForm : Form
     {
-        public ButtonForm(string textParam="", string fileParam = "", string imageParam = "", string backgroundParam = "")
+        public ButtonForm(string textParam="", int colorParam = -16777216, string fileParam = "", string imageParam = "", string backgroundParam = "")
         {
             InitializeComponent();
             TextTexbox.Text = textParam;
+            Console.WriteLine(colorParam);
+            OpenColorPickerButton.BackColor = Color.FromArgb(colorParam);
             FilePathTextBox.Text = fileParam;
             ImagePathTextBox.Text = imageParam;
             BackgroundPathTextBox.Text = backgroundParam;
@@ -45,14 +48,28 @@ namespace SoundBoard
 
         private void ImagePathTextBox_TextChanged(object sender, EventArgs e)
         {
-            PreviewButton.Image = Image.FromFile(ImagePathTextBox.Text);
-            PreviewButton.ImageAlign = ContentAlignment.MiddleLeft;
+            if (File.Exists(ImagePathTextBox.Text))
+            {
+                PreviewButton.Image = Image.FromFile(ImagePathTextBox.Text);
+                PreviewButton.ImageAlign = ContentAlignment.MiddleLeft;
+            }
+            else
+            {
+                PreviewButton.Image = null;
+            }
         }
 
         private void BackgroundPathTextBox_TextChanged(object sender, EventArgs e)
         {
-            PreviewButton.BackgroundImage = Image.FromFile(BackgroundPathTextBox.Text);
-            PreviewButton.BackgroundImageLayout = ImageLayout.Stretch;
+            if (File.Exists(BackgroundPathTextBox.Text))
+            {
+                PreviewButton.BackgroundImage = Image.FromFile(BackgroundPathTextBox.Text);
+                PreviewButton.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            else
+            {
+                PreviewButton.BackgroundImage = null;
+            }
         }
 
         private void OpenColorPickerButton_BackColorChanged(object sender, EventArgs e)
@@ -107,6 +124,30 @@ namespace SoundBoard
                 if (result == DialogResult.OK)
                 {
                     OpenColorPickerButton.BackColor = colorDialog.Color;
+                }
+                else
+                {
+                    OpenColorPickerButton.BackColor = Color.Black;
+                }
+            }
+        }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Thanks StackOverflow
+            // Try to cast the sender to a ToolStripItem
+            ToolStripItem menuItem = sender as ToolStripItem;
+            if (menuItem != null)
+            {
+                // Retrieve the ContextMenuStrip that owns this ToolStripItem
+                ContextMenuStrip owner = menuItem.Owner as ContextMenuStrip;
+                if (owner != null)
+                {
+                    // Get the control that is displaying this context menu
+                    Control sourceControl = owner.SourceControl;
+
+                    // My code
+                    sourceControl.Text = "";
                 }
             }
         }

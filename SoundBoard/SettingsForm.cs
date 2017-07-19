@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using NAudio;
 using NAudio.Wave;
 
-namespace SoundBoard
+namespace BlastBoard
 {
     public partial class SettingsForm : Form
     {

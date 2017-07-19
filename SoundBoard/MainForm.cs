@@ -12,7 +12,7 @@ using NAudio;
 using NAudio.Wave;
 using Newtonsoft.Json;
 
-namespace SoundBoard
+namespace BlastBoard
 {
     public partial class MainForm : Form
     {
@@ -39,7 +39,7 @@ namespace SoundBoard
             }
         }
         public List<MusicButtonInfo> CurrentButtons;
-        public string ButtonLayoutsPath = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + @"\ButtonLayouts\";
+        public string ButtonLayoutsPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\BlastBoard\ButtonLayouts\";
 
         private AudioPlaybackEngine AudioEngine;
 
@@ -72,6 +72,7 @@ namespace SoundBoard
                     ForeColor = i.textColor,
                     MinimumSize = new Size(75, 75),
                     ContextMenuStrip = ButtonContextMenu,
+                    Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold),
                     ImageAlign = ContentAlignment.MiddleLeft,
                     BackgroundImageLayout = ImageLayout.Stretch,
                 };
@@ -123,7 +124,7 @@ namespace SoundBoard
             }
             else
             {
-                File.WriteAllText(ButtonLayoutsPath + "DefaultLayout.json", "[{\"text\":\"Test\",}]");
+                File.WriteAllText(ButtonLayoutsPath + "DefaultLayout.json", "[]");
                 LayoutSelectorComboBox.Items.Add("DefaultLayout");
                 LayoutSelectorComboBox.SelectedItem = "DefaultLayout";
                 Properties.Settings.Default.Layout = "DefaultLayout";
@@ -232,12 +233,13 @@ namespace SoundBoard
                     // My code
                     int index = flowLayoutPanel1.Controls.IndexOf(sourceControl);
                     MusicButtonInfo ButtonToEdit = CurrentButtons[index];
-                    using (ButtonForm buttonWindow = new ButtonForm(ButtonToEdit.text, ButtonToEdit.file, ButtonToEdit.image, ButtonToEdit.background))
+                    using (ButtonForm buttonWindow = new ButtonForm(ButtonToEdit.text, ButtonToEdit.textColor.ToArgb(), ButtonToEdit.file, ButtonToEdit.image, ButtonToEdit.background))
                     {
                         DialogResult result = buttonWindow.ShowDialog();
                         if (result == DialogResult.OK)
                         {
                             ButtonToEdit.text = buttonWindow.text;
+                            ButtonToEdit.textColor = buttonWindow.textColor;
                             ButtonToEdit.file = buttonWindow.file;
                             ButtonToEdit.image = buttonWindow.image;
                             ButtonToEdit.background = buttonWindow.background;

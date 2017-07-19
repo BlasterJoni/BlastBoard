@@ -1,4 +1,4 @@
-﻿namespace SoundBoard
+﻿namespace BlastBoard
 {
     partial class ButtonForm
     {
@@ -28,16 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ButtonFormSaveButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.PreviewButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.TextTexbox = new System.Windows.Forms.TextBox();
+            this.OpenColorPickerButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.BackgroundPathTextBox = new System.Windows.Forms.TextBox();
+            this.ClearPathContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenBackgroundBrowserButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -50,12 +54,12 @@
             this.FilePathTextBox = new System.Windows.Forms.TextBox();
             this.OpenFileBrowserButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.OpenColorPickerButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.ClearPathContextMenuStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -87,6 +91,7 @@
             // PreviewButton
             // 
             this.PreviewButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.PreviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PreviewButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.PreviewButton.Location = new System.Drawing.Point(6, 19);
             this.PreviewButton.Name = "PreviewButton";
@@ -137,6 +142,17 @@
             this.TextTexbox.TabIndex = 1;
             this.TextTexbox.TextChanged += new System.EventHandler(this.TextTexbox_TextChanged);
             // 
+            // OpenColorPickerButton
+            // 
+            this.OpenColorPickerButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OpenColorPickerButton.Location = new System.Drawing.Point(174, 3);
+            this.OpenColorPickerButton.Name = "OpenColorPickerButton";
+            this.OpenColorPickerButton.Size = new System.Drawing.Size(24, 21);
+            this.OpenColorPickerButton.TabIndex = 2;
+            this.OpenColorPickerButton.UseVisualStyleBackColor = true;
+            this.OpenColorPickerButton.BackColorChanged += new System.EventHandler(this.OpenColorPickerButton_BackColorChanged);
+            this.OpenColorPickerButton.Click += new System.EventHandler(this.OpenColorPickerButton_Click);
+            // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -184,6 +200,7 @@
             this.BackgroundPathTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.BackgroundPathTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundPathTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BackgroundPathTextBox.ContextMenuStrip = this.ClearPathContextMenuStrip;
             this.BackgroundPathTextBox.Location = new System.Drawing.Point(3, 7);
             this.BackgroundPathTextBox.Name = "BackgroundPathTextBox";
             this.BackgroundPathTextBox.ReadOnly = true;
@@ -191,6 +208,20 @@
             this.BackgroundPathTextBox.TabIndex = 3;
             this.BackgroundPathTextBox.TabStop = false;
             this.BackgroundPathTextBox.TextChanged += new System.EventHandler(this.BackgroundPathTextBox_TextChanged);
+            // 
+            // ClearPathContextMenuStrip
+            // 
+            this.ClearPathContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clearToolStripMenuItem});
+            this.ClearPathContextMenuStrip.Name = "contextMenuStrip1";
+            this.ClearPathContextMenuStrip.Size = new System.Drawing.Size(129, 26);
+            // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.clearToolStripMenuItem.Text = "Clear Path";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // OpenBackgroundBrowserButton
             // 
@@ -251,6 +282,7 @@
             this.ImagePathTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ImagePathTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.ImagePathTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ImagePathTextBox.ContextMenuStrip = this.ClearPathContextMenuStrip;
             this.ImagePathTextBox.Location = new System.Drawing.Point(3, 7);
             this.ImagePathTextBox.Name = "ImagePathTextBox";
             this.ImagePathTextBox.ReadOnly = true;
@@ -319,6 +351,7 @@
             this.FilePathTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.FilePathTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.FilePathTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.FilePathTextBox.ContextMenuStrip = this.ClearPathContextMenuStrip;
             this.FilePathTextBox.Location = new System.Drawing.Point(3, 7);
             this.FilePathTextBox.Name = "FilePathTextBox";
             this.FilePathTextBox.ReadOnly = true;
@@ -348,17 +381,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "File";
             // 
-            // OpenColorPickerButton
-            // 
-            this.OpenColorPickerButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OpenColorPickerButton.Location = new System.Drawing.Point(174, 3);
-            this.OpenColorPickerButton.Name = "OpenColorPickerButton";
-            this.OpenColorPickerButton.Size = new System.Drawing.Size(24, 21);
-            this.OpenColorPickerButton.TabIndex = 2;
-            this.OpenColorPickerButton.UseVisualStyleBackColor = true;
-            this.OpenColorPickerButton.BackColorChanged += new System.EventHandler(this.OpenColorPickerButton_BackColorChanged);
-            this.OpenColorPickerButton.Click += new System.EventHandler(this.OpenColorPickerButton_Click);
-            // 
             // ButtonForm
             // 
             this.AcceptButton = this.ButtonFormSaveButton;
@@ -374,7 +396,7 @@
             this.MaximumSize = new System.Drawing.Size(1000, 210);
             this.MinimumSize = new System.Drawing.Size(415, 210);
             this.Name = "ButtonForm";
-            this.Text = "Button";
+            this.Text = "BlastBoard - Button";
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
@@ -384,6 +406,7 @@
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            this.ClearPathContextMenuStrip.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -421,5 +444,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.TextBox TextTexbox;
         private System.Windows.Forms.Button OpenColorPickerButton;
+        private System.Windows.Forms.ContextMenuStrip ClearPathContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
     }
 }

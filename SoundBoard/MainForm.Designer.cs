@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace SoundBoard
+namespace BlastBoard
 {
     partial class MainForm
     {
@@ -124,7 +124,7 @@ namespace SoundBoard
             this.LinkCheck.Checked = true;
             this.LinkCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.LinkCheck.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LinkCheck.Image = global::SoundBoard.Properties.Resources.link;
+            this.LinkCheck.Image = global::BlastBoard.Properties.Resources.link;
             this.LinkCheck.Location = new System.Drawing.Point(262, 3);
             this.LinkCheck.Name = "LinkCheck";
             this.LinkCheck.Size = new System.Drawing.Size(34, 29);
@@ -308,7 +308,7 @@ namespace SoundBoard
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(500, 240);
             this.Name = "MainForm";
-            this.Text = "SoundBoard";
+            this.Text = "BlastBoard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.OutputVolumeBar)).EndInit();
