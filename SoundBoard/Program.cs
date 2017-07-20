@@ -24,9 +24,9 @@ namespace BlastBoard
 
         static async void update()
         {
-            using (var mgr = new UpdateManager(@"C:\Users\joaom\Documents\Auto.Squirrel\Projects\BlastBoard_files\Releases"))
+            using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/BlasterJoni/BlastBoard"))
             {
-                await mgr.UpdateApp();
+                await mgr.Result.UpdateApp();
             }
         }
     }
