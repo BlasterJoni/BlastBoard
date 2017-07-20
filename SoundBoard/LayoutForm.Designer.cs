@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LayoutForm));
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.NameTexbox = new System.Windows.Forms.TextBox();
@@ -108,6 +109,7 @@
             this.ClientSize = new System.Drawing.Size(484, 56);
             this.Controls.Add(this.LayoutFormSaveButton);
             this.Controls.Add(this.tableLayoutPanel7);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(500, 95);
             this.MinimumSize = new System.Drawing.Size(300, 95);
             this.Name = "LayoutForm";

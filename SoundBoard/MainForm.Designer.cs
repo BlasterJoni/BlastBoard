@@ -31,12 +31,13 @@ namespace BlastBoard
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.OutputCheck = new System.Windows.Forms.CheckBox();
             this.LocalCheck = new System.Windows.Forms.CheckBox();
             this.OutputVolumeBar = new System.Windows.Forms.TrackBar();
             this.LocalVolumeBar = new System.Windows.Forms.TrackBar();
-            this.LinkCheck = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.LinkCheck = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.FlowLayoutPanelContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addButtonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +54,9 @@ namespace BlastBoard
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addButtonToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.OutputVolumeBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LocalVolumeBar)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -116,21 +120,6 @@ namespace BlastBoard
             this.LocalVolumeBar.Value = 100;
             this.LocalVolumeBar.Scroll += new System.EventHandler(this.LocalVolumeBar_Scroll);
             // 
-            // LinkCheck
-            // 
-            this.LinkCheck.Appearance = System.Windows.Forms.Appearance.Button;
-            this.LinkCheck.AutoSize = true;
-            this.LinkCheck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.LinkCheck.Checked = true;
-            this.LinkCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.LinkCheck.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LinkCheck.Image = global::BlastBoard.Properties.Resources.link;
-            this.LinkCheck.Location = new System.Drawing.Point(262, 3);
-            this.LinkCheck.Name = "LinkCheck";
-            this.LinkCheck.Size = new System.Drawing.Size(34, 29);
-            this.LinkCheck.TabIndex = 3;
-            this.LinkCheck.UseVisualStyleBackColor = true;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -152,6 +141,21 @@ namespace BlastBoard
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(564, 35);
             this.tableLayoutPanel1.TabIndex = 7;
+            // 
+            // LinkCheck
+            // 
+            this.LinkCheck.Appearance = System.Windows.Forms.Appearance.Button;
+            this.LinkCheck.AutoSize = true;
+            this.LinkCheck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.LinkCheck.Checked = true;
+            this.LinkCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.LinkCheck.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LinkCheck.Image = global::BlastBoard.Properties.Resources.link;
+            this.LinkCheck.Location = new System.Drawing.Point(262, 3);
+            this.LinkCheck.Name = "LinkCheck";
+            this.LinkCheck.Size = new System.Drawing.Size(34, 29);
+            this.LinkCheck.TabIndex = 3;
+            this.LinkCheck.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel1
             // 
@@ -182,10 +186,12 @@ namespace BlastBoard
             // ButtonContextMenu
             // 
             this.ButtonContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addButtonToolStripMenuItem1,
+            this.toolStripSeparator1,
             this.editButtonToolStripMenuItem,
             this.removeButtonToolStripMenuItem});
             this.ButtonContextMenu.Name = "contextMenuStrip1";
-            this.ButtonContextMenu.Size = new System.Drawing.Size(157, 48);
+            this.ButtonContextMenu.Size = new System.Drawing.Size(157, 98);
             // 
             // editButtonToolStripMenuItem
             // 
@@ -234,10 +240,11 @@ namespace BlastBoard
             // 
             this.LayoutComboBoxContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addLayoutToolStripMenuItem,
+            this.toolStripSeparator2,
             this.editLayoutToolStripMenuItem,
             this.removeLayoutToolStripMenuItem});
             this.LayoutComboBoxContextMenu.Name = "LayoutComboBoxContextMenu";
-            this.LayoutComboBoxContextMenu.Size = new System.Drawing.Size(157, 70);
+            this.LayoutComboBoxContextMenu.Size = new System.Drawing.Size(157, 76);
             // 
             // addLayoutToolStripMenuItem
             // 
@@ -296,6 +303,23 @@ namespace BlastBoard
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // addButtonToolStripMenuItem1
+            // 
+            this.addButtonToolStripMenuItem1.Name = "addButtonToolStripMenuItem1";
+            this.addButtonToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
+            this.addButtonToolStripMenuItem1.Text = "Add Button";
+            this.addButtonToolStripMenuItem1.Click += new System.EventHandler(this.addButtonToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(153, 6);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(153, 6);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,6 +330,7 @@ namespace BlastBoard
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(500, 240);
             this.Name = "MainForm";
             this.Text = "BlastBoard";
@@ -349,6 +374,9 @@ namespace BlastBoard
         private ToolStripMenuItem addLayoutToolStripMenuItem;
         private ToolStripMenuItem editLayoutToolStripMenuItem;
         private ToolStripMenuItem removeLayoutToolStripMenuItem;
+        private ToolStripMenuItem addButtonToolStripMenuItem1;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripSeparator toolStripSeparator2;
     }
 }
 
