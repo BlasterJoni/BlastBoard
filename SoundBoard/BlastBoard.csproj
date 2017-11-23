@@ -50,6 +50,9 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fleck, Version=0.14.0.59, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fleck.0.14.0.59\lib\net40\Fleck.dll</HintPath>
+    </Reference>
     <Reference Include="NAudio, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NAudio.1.8.0\lib\net35\NAudio.dll</HintPath>
     </Reference>
@@ -88,6 +91,8 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MusicButtonInfo.cs" />
+    <Compile Include="RemoteMessage.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,18 +142,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\Licenses\BlastBoard_license.url">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Licenses\Fugue-Icons_license.url">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Licenses\Json.NET_license.url">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Licenses\NAudio_license.url">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\if_link_1608762 %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\if_playlist_83362 %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\if_settings_309079.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -170,15 +178,17 @@
     <None Include="Resources\icon.ico" />
     <None Include="Resources\ezgif-1-697747637a.gif" />
     <Content Include="icon.ico" />
-    <Content Include="Resources\Licenses\BlastBoard_license.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Licenses\Json.NET_license.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Licenses\NAudio_license.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\fugue-icons-3.5.6\icons-shadowless\chain.png" />
+    <None Include="Resources\fugue-icons-3.5.6\icons-shadowless\gear.png" />
+    <None Include="Resources\fugue-icons-3.5.6\icons-shadowless\information-frame.png" />
+    <None Include="Resources\fugue-icons-3.5.6\icons-shadowless\remote-control.png" />
+    <None Include="Resources\fugue-icons-3.5.6\icons-shadowless\speaker.png" />
+    <None Include="Resources\fugue-icons-3.5.6\icons-shadowless\document--pencil.png" />
+    <None Include="Resources\fugue-icons-3.5.6\icons-shadowless\document--plus.png" />
+    <None Include="Resources\fugue-icons-3.5.6\icons-shadowless\keyboard--minus.png" />
+    <None Include="Resources\fugue-icons-3.5.6\icons-shadowless\keyboard--pencil.png" />
+    <None Include="Resources\fugue-icons-3.5.6\icons-shadowless\keyboard--plus.png" />
+    <None Include="Resources\fugue-icons-3.5.6\icons-shadowless\document--minus.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

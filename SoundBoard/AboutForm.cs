@@ -24,7 +24,7 @@ namespace BlastBoard
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Process.Start(ExeFolder + @"\Resources\Licenses\BlastBoard_license.txt");
+            Process.Start(ExeFolder + @"\Resources\Licenses\BlastBoard_license.url");
         }
 
         private void button1_Click(object sender, EventArgs e)

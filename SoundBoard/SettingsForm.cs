@@ -28,6 +28,7 @@ namespace BlastBoard
             }
             SpeakersComboBox.SelectedIndex = Properties.Settings.Default.Speakers;
             VACinputComboBox.SelectedIndex = Properties.Settings.Default.VACinput;
+            RemoteCheckBox.Checked = Properties.Settings.Default.Remote;
         }
 
         private void SpeakersComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -43,6 +44,11 @@ namespace BlastBoard
         private void SettingsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default.Save();
+        }
+
+        private void RemoteCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Remote = RemoteCheckBox.Checked;
         }
     }
 }

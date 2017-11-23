@@ -11,12 +11,25 @@ namespace BlastBoard
 {
     //Code form the creator of the library.
     //I did changes to AudioPlayBackEngine() and Dispose().
+    //Also added ResampleTo44100().
     class AudioPlaybackEngine : IDisposable
     {
         private readonly WaveOut SpeakersOUT;
         private readonly WaveOut VACinputOUT;
         private readonly MixingSampleProvider mixer1;
         private readonly MixingSampleProvider mixer2;
+
+        public float LocalVolume
+        {
+            get { return SpeakersOUT.Volume * 100.0f; }
+            set { SpeakersOUT.Volume = value / 100.0f; }
+        }
+
+        public float OutputVolume
+        {
+            get { return VACinputOUT.Volume * 100.0f; }
+            set { VACinputOUT.Volume = value / 100.0f; }
+        }
 
         public AudioPlaybackEngine(int sampleRate = 44100, int channelCount = 2)
         {
@@ -37,18 +50,6 @@ namespace BlastBoard
             VACinputOUT.Init(mixer2);
             SpeakersOUT.Play();
             VACinputOUT.Play();
-        }
-
-        public void SetLocalVolume(float volumePercent)
-        {
-            float volumeFloat = volumePercent / 100.0f;
-            SpeakersOUT.Volume = volumeFloat;
-        }
-
-        public void SetOutputVolume(float volumePercent)
-        {
-            float volumeFloat = volumePercent / 100.0f;
-            VACinputOUT.Volume = volumeFloat;
         }
 
         public void StopSound()
@@ -79,11 +80,28 @@ namespace BlastBoard
             throw new NotImplementedException("Not yet implemented this channel count conversion");
         }
 
+        //Resamples into the right sample rate.
+        private ISampleProvider ResampleTo44100(ISampleProvider input)
+        {
+            if (input.WaveFormat.SampleRate != mixer1.WaveFormat.SampleRate && input.WaveFormat.SampleRate != mixer2.WaveFormat.SampleRate)
+            {
+                // Converts the ISampleProvider to IWaveProvider,
+                // resamples the created IWaveProvider to 44100,
+                // converts the IWaveProvider back to ISampleProvider.
+                return new WaveToSampleProvider(new MediaFoundationResampler(new SampleToWaveProvider(input), 44100));
+            }
+            if (input.WaveFormat.SampleRate == mixer1.WaveFormat.SampleRate && input.WaveFormat.SampleRate == mixer2.WaveFormat.SampleRate)
+            {
+                return input;
+            }
+            throw new Exception("WTF! How the fuck you made the mixers have diferent sample rates?");
+        }
+
         //Add disposable reader to the mixer input after convertion to stereo.
         private void AddMixerInput(ISampleProvider input1, ISampleProvider input2)
         {
-            mixer1.AddMixerInput(ConvertToRightChannelCount(input1));
-            mixer2.AddMixerInput(ConvertToRightChannelCount(input2));
+            mixer1.AddMixerInput(ResampleTo44100(ConvertToRightChannelCount(input1)));
+            mixer2.AddMixerInput(ResampleTo44100(ConvertToRightChannelCount(input2)));
         }
 
         public void Dispose()

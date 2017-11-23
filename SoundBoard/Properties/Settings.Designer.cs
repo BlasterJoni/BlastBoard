@@ -49,13 +49,85 @@ namespace BlastBoard.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("DefaultLayout")]
         public string Layout {
             get {
                 return ((string)(this["Layout"]));
             }
             set {
                 this["Layout"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public float LocalVolume {
+            get {
+                return ((float)(this["LocalVolume"]));
+            }
+            set {
+                this["LocalVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public float OutputVolume {
+            get {
+                return ((float)(this["OutputVolume"]));
+            }
+            set {
+                this["OutputVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LocalCheck {
+            get {
+                return ((bool)(this["LocalCheck"]));
+            }
+            set {
+                this["LocalCheck"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LinkCheck {
+            get {
+                return ((bool)(this["LinkCheck"]));
+            }
+            set {
+                this["LinkCheck"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OutputCheck {
+            get {
+                return ((bool)(this["OutputCheck"]));
+            }
+            set {
+                this["OutputCheck"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Remote {
+            get {
+                return ((bool)(this["Remote"]));
+            }
+            set {
+                this["Remote"] = value;
             }
         }
     }
