@@ -24,7 +24,7 @@ namespace BlastBoard
 
         private List<MusicButtonInfo> CurrentButtons;
         private string CurrentLayout;
-        private string ButtonLayoutsPath = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\BlastBoard\ButtonLayouts\";
+        private string ButtonLayoutsPath = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\BlastBoard\ButtonLayouts\";
 
         private AudioPlaybackEngine AudioEngine;
 
@@ -33,21 +33,23 @@ namespace BlastBoard
 
         private void SendMessageServer(IWebSocketConnection socket, string messageType)
         {
-            int localVolumeToSend = 0;
-            int outputVolumeToSend = 0;
+            int LocalVolumeToSend = 0;
+            int OutputVolumeToSend = 0;
+            string CurrentLayoutToSend = "";
             LocalVolumeBar.Invoke(new MethodInvoker(() =>
             {
-                localVolumeToSend = LocalVolumeBar.Value;
-                outputVolumeToSend = OutputVolumeBar.Value;
+                LocalVolumeToSend = LocalVolumeBar.Value;
+                OutputVolumeToSend = OutputVolumeBar.Value;
+                CurrentLayoutToSend = LayoutSelectorComboBox.SelectedItem.ToString();
             }));
             RemoteMessageToSend messageToSend = new RemoteMessageToSend(
                 messageType,
                 LocalCheck.Checked,
-                localVolumeToSend,
+                LocalVolumeToSend,
                 LinkCheck.Checked,
                 OutputCheck.Checked,
-                outputVolumeToSend,
-                LayoutSelectorComboBox.SelectedText,
+                OutputVolumeToSend,
+                CurrentLayoutToSend,
                 LayoutSelectorComboBox.Items,
                 CurrentButtons
                 );
@@ -82,6 +84,10 @@ namespace BlastBoard
                     if (int.TryParse(messageReceived.message, out int buttonID))
                     {
                         AudioEngine.PlaySound(CurrentButtons[buttonID].file);
+                    }
+                    if (messageReceived.message == "stop")
+                    {
+                        AudioEngine.StopSound();
                     }
                     if (messageReceived.message == "full")
                     {
@@ -164,6 +170,10 @@ namespace BlastBoard
                     });
                 }
                 flowLayoutPanel1.Controls.Add(button);
+            }
+            foreach (IWebSocketConnection socket in CurrentRemotes)
+            {
+                SendMessageServer(socket, "layout");
             }
         }
 
@@ -260,10 +270,6 @@ namespace BlastBoard
             SaveLayout();
             CurrentLayout = LayoutSelectorComboBox.SelectedItem.ToString();
             ChangeLayout();
-            foreach (IWebSocketConnection socket in CurrentRemotes)
-            {
-                SendMessageServer(socket, "layout");
-            }
         }
 
 
@@ -280,7 +286,7 @@ namespace BlastBoard
             }
             else
             {
-                Console.WriteLine("sdf");
+                Console.WriteLine("Remote off");
                 CloseRemoteServer();
             }
         }

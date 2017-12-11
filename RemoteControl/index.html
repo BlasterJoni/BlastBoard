@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>BlastBoard Remote Control</title>
+	<script type="text/javascript" src="index.js"></script>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+	<select name="layouts" id="layouts" onchange=LayoutChanged()></select>
+	<button id="stopButton" onclick=StopSound()>Stop</button>
+	<div id="buttons"></div>
+	<div id="volumeControl">
+		Local:
+		<input type="checkbox" id="localCheck" checked="true" onchange=AudioChanged()>
+		<input type="range" id="localVolumeBar" min="0" max="100" step="1" value="100" oninput=AudioChanged("localVolumeBar")>
+		Link:
+		<input type="checkbox" id="linkCheck" checked="true" onchange=AudioChanged()>
+		Output:
+		<input type="checkbox" id="outputCheck" checked="true" onchange=AudioChanged()> 
+		<input type="range" id="outputVolumeBar" min="0" max="100" step="1" value="100" oninput=AudioChanged("outputVolumeBar")>
+	</div>
+</body>
+</html>

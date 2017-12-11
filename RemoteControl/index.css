@@ -1,0 +1,29 @@
+select{
+    width: 100%;
+    height: 50px;
+    margin: 5px;
+}
+
+#stopButton{
+    width: 100%;
+    height: 50px;
+    background-size: unset;
+}
+
+button{
+    vertical-align: middle;
+    background-size: 75px 75px;
+    height: 75px;
+    width: 75px;
+    overflow: hidden;
+    position: relative;
+    margin: 5px;
+}
+button img{
+    position: absolute;
+    left: 1px;
+    top: 28px;
+}
+button div{
+  margin-left:13px;
+}

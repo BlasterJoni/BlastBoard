@@ -1,0 +1,99 @@
+//On connect[Done]:
+    //Send:
+        {message:"full"}
+    //Receive:
+        {
+            message:"full",
+            data:{
+                audio:{
+                    local: //bool,
+                    localVolume: //int,
+                    link: //bool,
+                    output: //bool,
+                    outputVolume: //int
+                },
+                layout:{
+                    currentLayout: //string,
+                    layoutList: //string list,
+                    buttons:[
+                        {
+                            text: //string,
+                            textColor: //string,
+                            background: //base64 encoded img,
+                            image: //base64 encoded img
+                        },...
+                    ]
+                }
+            }
+        }
+//On audio change:
+    //Send(Client-side change)[Done]/Receive(Server-side change)[Done]:
+        {
+            message:"audio",
+            data:{
+                audio:{
+                    local: //bool,
+                    localVolume: //int,
+                    link: //bool,
+                    output: //bool,
+                    outputVolume: //int
+                }
+            }
+        }
+//On layout change:
+    //Server-side change[Done]:
+        //Receive:
+            {
+                message:"layout",
+                data:{
+                    layout:{
+                        currentLayout: //string,
+                        layoutList: //string list,
+                        buttons:[
+                            {
+                                text: //string,
+                                textColor: //string,
+                                background: //base64 encoded img,
+                                image: //base64 encoded img
+                            },...
+                        ]
+                    }
+                }
+            }
+    //Client-side change[Done]:
+        //Send:
+            {
+                message:"layout",
+                data:{
+                    layout:{
+                        currentLayout: //string
+                    }
+            }
+        Receive:
+            {
+                message:"layout",
+                data:{
+                    layout:{
+                        currentLayout: //string,
+                        layoutList: //string list,
+                        buttons:[
+                            {
+                                text: //string,
+                                textColor: //string,
+                                background: //base64 encoded img,
+                                image: //base64 encoded img
+                            },...
+                        ]
+                    }
+                }
+            }
+//On button click[Done]:
+    //Stop
+        {
+            message: "stop"
+        }
+    //Send:
+        {
+            message: //int
+        }
+    
