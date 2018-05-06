@@ -1,4 +1,4 @@
-#Project dropped
+# Project dropped
 The project was dropped in favour of xBlastBoard, a cross-platform sucessor to BlastBoard.
 https://github.com/BlasterJoni/xBlastBoard
 
