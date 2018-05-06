@@ -40,6 +40,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.RemoteCheckBox = new System.Windows.Forms.CheckBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -58,7 +60,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(450, 126);
+            this.tabControl1.Size = new System.Drawing.Size(1006, 481);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -68,7 +70,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(442, 99);
+            this.tabPage1.Size = new System.Drawing.Size(998, 454);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Audio";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -85,7 +87,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(436, 91);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(992, 91);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // groupBox1
@@ -94,7 +96,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(430, 39);
+            this.groupBox1.Size = new System.Drawing.Size(986, 39);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Speakers";
@@ -106,7 +108,7 @@
             this.SpeakersComboBox.FormattingEnabled = true;
             this.SpeakersComboBox.Location = new System.Drawing.Point(3, 16);
             this.SpeakersComboBox.Name = "SpeakersComboBox";
-            this.SpeakersComboBox.Size = new System.Drawing.Size(424, 21);
+            this.SpeakersComboBox.Size = new System.Drawing.Size(980, 21);
             this.SpeakersComboBox.TabIndex = 0;
             this.SpeakersComboBox.SelectedIndexChanged += new System.EventHandler(this.SpeakersComboBox_SelectedIndexChanged);
             // 
@@ -116,7 +118,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 48);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(430, 40);
+            this.groupBox2.Size = new System.Drawing.Size(986, 40);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Virtual Audio Cable Input";
@@ -128,18 +130,20 @@
             this.VACinputComboBox.FormattingEnabled = true;
             this.VACinputComboBox.Location = new System.Drawing.Point(3, 16);
             this.VACinputComboBox.Name = "VACinputComboBox";
-            this.VACinputComboBox.Size = new System.Drawing.Size(424, 21);
+            this.VACinputComboBox.Size = new System.Drawing.Size(980, 21);
             this.VACinputComboBox.TabIndex = 0;
             this.VACinputComboBox.SelectedIndexChanged += new System.EventHandler(this.VACinputComboBox_SelectedIndexChanged);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.linkLabel1);
+            this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.RemoteCheckBox);
             this.tabPage2.ImageIndex = 1;
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(442, 99);
+            this.tabPage2.Size = new System.Drawing.Size(998, 454);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Remote Control";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -147,7 +151,7 @@
             // RemoteCheckBox
             // 
             this.RemoteCheckBox.AutoSize = true;
-            this.RemoteCheckBox.Location = new System.Drawing.Point(3, 6);
+            this.RemoteCheckBox.Location = new System.Drawing.Point(6, 6);
             this.RemoteCheckBox.Name = "RemoteCheckBox";
             this.RemoteCheckBox.Size = new System.Drawing.Size(263, 17);
             this.RemoteCheckBox.TabIndex = 0;
@@ -163,12 +167,31 @@
             this.imageList1.Images.SetKeyName(0, "speaker.png");
             this.imageList1.Images.SetKeyName(1, "remote-control.png");
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Link: ";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(48, 30);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(29, 13);
+            this.linkLabel1.TabIndex = 2;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "link1";
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(450, 126);
+            this.ClientSize = new System.Drawing.Size(1006, 481);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(400, 160);
@@ -199,5 +222,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.CheckBox RemoteCheckBox;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label label1;
     }
 }

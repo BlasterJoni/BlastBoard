@@ -12,6 +12,9 @@ using NAudio;
 using NAudio.Wave;
 using Newtonsoft.Json;
 using Fleck;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
 
 namespace BlastBoard
 {
@@ -30,6 +33,7 @@ namespace BlastBoard
 
         private WebSocketServer RemoteServer;
         private List<IWebSocketConnection> CurrentRemotes = new List<IWebSocketConnection>();
+        private WebServer WebsiteServer;
 
         private void SendMessageServer(IWebSocketConnection socket, string messageType)
         {
@@ -56,8 +60,9 @@ namespace BlastBoard
             socket.Send(JsonConvert.SerializeObject(messageToSend));
         }
 
-        private void CloseRemoteServer()
+        private void CloseServers()
         {
+            //Websockets(Remote controllers)
             if (RemoteServer != null)
             {
                 RemoteServer.Dispose();
@@ -68,12 +73,19 @@ namespace BlastBoard
                 socket.Close();
             }
             CurrentRemotes.Clear();
+            //Webserver
+            if (WebsiteServer != null)
+            {
+                WebsiteServer.Stop();
+                WebsiteServer = null;
+            }
         }
 
-        private void CreateRemoteServer()
+        private void CreateServers()
         {
-            CloseRemoteServer();
-            RemoteServer = new WebSocketServer("ws://0.0.0.0:42069");
+            //Websockets(Remote controllers)
+            CloseServers();
+            RemoteServer = new WebSocketServer("ws://192.168.1.102:42069");
             RemoteServer.Start(socket =>
             {
                 socket.OnOpen = () => CurrentRemotes.Add(socket);
@@ -124,6 +136,28 @@ namespace BlastBoard
                     }
                 };
             });
+            //Webserver
+            WebsiteServer = new WebServer(SendResponse, "http://localhost:8080/");
+            WebsiteServer.Run();
+        }
+
+        public static string SendResponse(HttpListenerRequest request)
+        {
+            if (request.RawUrl == "/" || request.RawUrl == "/index.html") {
+                return File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Resources\RemoteControl\index.html");
+            }
+            else if(request.RawUrl == "/index.js")
+            {
+                return File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Resources\RemoteControl\index.js");
+            }
+            else if (request.RawUrl == "/index.css")
+            {
+                return File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"Resources\RemoteControl\index.css");
+            }
+            else
+            {
+                return string.Format("<HTML><BODY>404 Not found<br>{0}</BODY></HTML>", DateTime.Now);
+            }
         }
 
         private void CloseAudioEngine()
@@ -242,7 +276,7 @@ namespace BlastBoard
             UpdateLayouts();
             if (Properties.Settings.Default.Remote)
             {
-                CreateRemoteServer();
+                CreateServers();
             }
         }
 
@@ -257,7 +291,7 @@ namespace BlastBoard
             Properties.Settings.Default.OutputCheck = OutputCheck.Checked;
             Properties.Settings.Default.Save();
             CloseAudioEngine();
-            CloseRemoteServer();
+            CloseServers();
         }
 
         private void StopButton_Click(object sender, EventArgs e)
@@ -282,12 +316,11 @@ namespace BlastBoard
             CreateAudioEngine();
             if (Properties.Settings.Default.Remote)
             {
-                CreateRemoteServer();
+                CreateServers();
             }
             else
             {
-                Console.WriteLine("Remote off");
-                CloseRemoteServer();
+                CloseServers();
             }
         }
 
@@ -504,7 +537,19 @@ namespace BlastBoard
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
+                {
+                    socket.Connect("10.0.1.20", 1337); // doesnt matter what it connects to
+                    IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+                    Console.WriteLine(endPoint.Address.ToString()); //ipv4
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Failed"); // If no connection is found
+            }
         }
 
     }
